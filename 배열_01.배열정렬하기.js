@@ -1,9 +1,11 @@
-
 //01.배열정렬하기
+function solution(arr){
 
-var num_list = [1, -5, 2, 4, 3];
-//출력 [-5, 1, 2, 3, 4]
+    //출력 [-5, 1, 2, 3, 4]
 
-num_list.sort((a, b) => a - b);
+    arr.sort((a, b) => a - b);
+    return arr;
+}
 
-console.log(num_list);
+
+console.log(solution([1, -5, 2, 4, 3]));
