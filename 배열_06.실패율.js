@@ -11,7 +11,7 @@ function solution(N, stages){
     console.log(temparr);
     // 정리가 끝난 상태: [0, 1, 3, 2, 1, 0, 1]
 
-}
+}  
 
 //입출력의 예
 // N    stages                result
