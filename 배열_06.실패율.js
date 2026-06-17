@@ -1,6 +1,6 @@
 // 실패율
 // 실패율 정의 : 스테이지 도달했으나 아직 클리어 못한 플레이어의 수 / 스테이지에 도달한 플레이어의 수
-
+/*
 function solution(N, stages){
     //1. 스테이지별 도전자 수 구함
     const 도전자수 = new Array(N+2).fill(0);
@@ -16,10 +16,7 @@ function solution(N, stages){
 
     //3. 각 스테이지를 순회하며, 실패율 계산
     for(let i=1; i<=N; i++){
-        if(도전자수[i] === 0){
-            실패자수율[i] == 0;
-        }
-        
+           
         // 실패율 계산
         rate = 도전자수[i] / total;
         
@@ -42,6 +39,43 @@ function solution(N, stages){
 
     return 실패자수율.map((item)=> item.stage);
 }  
+*/
+
+// 실패율
+// 실패율 정의 : 스테이지 도달했으나 아직 클리어 못한 플레이어의 수 / 스테이지에 도달한 플레이어의 수
+
+function solution(N, stages){
+    const 도전자수 = new Array(N+2).fill(0);
+
+    for(let stage of stages){
+        도전자수[stage]++;
+    }
+    console.log(도전자수);
+
+    실패자수율 = [];
+    total = stages.length;
+
+    for(let i=1; i<=N; i++){
+
+        rate= 도전자수[i] / total;
+        
+        실패자수율.push({stage:i ,rate:rate});
+
+        total -= 도전자수[i];
+    }
+    console.log(실패자수율);
+
+    실패자수율.sort((a,b) => {
+        
+        if(a.rate == b.rate){
+            return a.stage - b.stage; 
+        }
+
+        return b.rate - a.rate;
+    });
+
+    return 실패자수율.map((a)=> a.stage);
+}
 
 //입출력의 예
 // 전체 스테이지 개수가 N
