@@ -33,7 +33,7 @@ function solution(dirs){
         const nextX = nowX + move[dir][0];
         const nextY = nowY + move[dir][1];
        
-        console.log("nextX=" + nextX +"nextX=" +nextY);
+        console.log("nextX=" + nextX +"nextY=" +nextY);
         //4. 경계선(-5 ~ 5을 벗어나는 명령이면 무시하고 다음 명령으로 넘어감
         if(nextX < -5 || nextX > 5 || nextY <-5 || nextY >5){
             continue;
