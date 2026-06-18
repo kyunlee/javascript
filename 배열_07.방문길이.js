@@ -16,6 +16,50 @@ L (Left): 왼쪽으로 한 칸 이동 (X좌표 - 1)
 
 function solution(dirs){
     // 1. 이동할 방향에 따른 X, Y 변화량을 객체로 정의합니다.
+    const move = {
+          U : [0,1]
+        , D : [0,-1]
+        , R : [1,0]
+        , L : [-1,0]
+    }
+
+    //2. 현재 위치 (0,0)과 지나간 길을 기록할 Set을 만듭니다.
+    let nowX = 0;
+    let nowY = 0;
+    const visited = new Set();
+
+    //3. 주어진 명령어(dirs)를 하나씩 확인합니다.
+    for(const dir of dirs){
+        const nextX = nowX + move[dir][0];
+        const nextY = nowY + move[dir][1];
+       
+        console.log("nextX=" + nextX +"nextX=" +nextY);
+        //4. 경계선(-5 ~ 5을 벗어나는 명령이면 무시하고 다음 명령으로 넘어감
+        if(nextX < -5 || nextX > 5 || nextY <-5 || nextY >5){
+            continue;
+        }
+
+        // 5. 이동한 길을 문자열로 만들어 기록장(Set)에 넣습니다. (왕복 모두 기록)
+        // 예: "0,0 에서 0,1 로 갔다" -> "0001"
+        const path1 =`${nowX}${nowY}${nextX}${nextY}`;
+        const path2 =`${nextX}${nextY}${nowX}${nowY}`;
+
+        console.log("path1=" + path1 +"path2=" +path2);
+
+        visited.add(path1);
+        visited.add(path2);
+
+        console.log(visited);
+
+        //6.캐리턱 위치를 방금 이동한 새위치로 업데이트
+        nowX = nextX;
+        nowY = nextY;
+
+        
+    }
+
+    console.log(visited.size);
+    return visited.size /2 ;
 
 }
 
