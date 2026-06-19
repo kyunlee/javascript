@@ -13,7 +13,7 @@ D (Down): 아래로 한 칸 이동 (Y좌표 - 1)
 R (Right): 오른쪽으로 한 칸 이동 (X좌표 + 1)
 L (Left): 왼쪽으로 한 칸 이동 (X좌표 - 1)
 */
-
+/*
 function solution(dirs){
     // 1. 이동할 방향에 따른 X, Y 변화량을 객체로 정의합니다.
     const move = {
@@ -62,9 +62,42 @@ function solution(dirs){
     return visited.size /2 ;
 
 }
+*/
+//ULURRDLLU
+function solution(dirs){
+    const move = {
+        U : [0,1],  //Y
+        D : [0,-1], //Y
+        R : [1,0],  //X
+        L : [-1,0]  //X
+    }
 
+    let nowX = 0;
+    let nowY = 0;
 
+    var visited = new Set();
 
+    for(let dir of dirs){
+
+        const netX = nowX + move[dir][0];
+        const netY = nowY + move[dir][1];
+
+        if( netX < -5 || netX > 5 || netY < -5 || netY > 5){
+            continue;
+        }
+
+        const path1 = `${nowX}${nowY}${netX}${netY}`;
+        const path2 = `${netX}${netY}${nowX}${nowY}`;
+
+        visited.add(path1);
+        visited.add(path2);
+
+        nowX = netX;
+        nowY = netY;
+    }
+
+    return visited.size/2
+}
 
 
 
