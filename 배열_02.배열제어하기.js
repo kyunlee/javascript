@@ -1,4 +1,4 @@
-//02.배열 제어하기
+//02.배열 제어하기 -전체 중복제거
 function solution(arr){
 
     var uniquearr = [...new Set(arr)];
