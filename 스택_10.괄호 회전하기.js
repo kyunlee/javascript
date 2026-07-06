@@ -100,4 +100,37 @@ function solution2(s){
     return answer;
 }
 
-console.log(solution2("[](){}"));
+//console.log(solution2("[](){}"));
+
+function solution3(s) {
+    const n = s.length;
+    const doubledS = s+s; //문자열 두배로 늘림
+    let count = 0;
+
+    for(let i=0; i < n; i++){
+        console.log(doubledS.substring(i,i+n));
+        if(isValid(doubledS.substring(i,i+n))){
+            count++;
+        }
+    }
+    return count;
+
+    function isValid(str){
+        const stack = [];
+        
+        for(let char of str){
+            if(char == '(' || char == "{" || char == '[' ){
+                stack.push(char);
+            }else{
+                //스택이 비어있거나, 짝이 맞지않으면 즉시 false
+                const top = stack.pop();
+                if(char == ')' && top != "(") return false;
+                if(char == '}' && top != "{") return false;
+                if(char == ']' && top != '[') return false;
+            }
+        }
+        return stack.length == 0;
+    }
+
+}
+console.log(solution3("[](){}"));
