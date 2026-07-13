@@ -2,7 +2,7 @@ function solution(rank, attendance){
 
     const availStudents = rank.map((r,i) =>({id:i, rank:r}))
                               .filter((_,i) => attendance[i]);
-
+    console.log(availStudents);
     availStudents.sort((a,b) => a.rank - b.rank);
 
     const [a,b,c]=[availStudents[0].id,

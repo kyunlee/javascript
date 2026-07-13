@@ -41,3 +41,22 @@ function solution3(myStr) {
 }
 
 console.log(solution3("baconlettucetomato"));
+
+//문자열 묶기
+function solution4(strArr){
+    const lengthCnt = {};
+    
+    for(const s  of strArr){
+        const len = s.length;
+        //lengthCnt[len] = (lengthCnt[len] || 0)+1;
+        if(lengthCnt[len] == undefined){
+            lengthCnt[len] = 1;
+        }else{
+            lengthCnt[len] = lengthCnt[len]+1;
+        }
+    }
+
+    return Math.max(...Object.values(lengthCnt));
+}
+
+console.log("solution4=",solution4(["a","bc","d","efg","hi"]));
