@@ -6,6 +6,8 @@ function solution(participant, completion) {
     for(let i=0; i<participant.length; i++){
         let p=participant[i];
         map.set(p,(map.get(p)||0)+1);
+        console.log(map.get(p));
+        
     }
 
     //2. 완주자 명단을 돌면서 Map에서 -1 차감
@@ -23,4 +25,29 @@ function solution(participant, completion) {
 
 }
 
-console.log(solution(["leo", "kiki", "eden"],["eden", "kiki"])); //"leo"
+//console.log(solution(["leo", "kiki", "eden"],["eden", "kiki"])); //"leo"
+
+// 7/20
+function solution1(participant, completion) {
+    let hashMap = new Map();
+
+    for(let i=0; i<participant.length; i++){
+        const p = participant[i];
+        hashMap.set(p,(hashMap.get(p)||0)+1);
+    }
+     for(let j=0; j<completion.length; j++){
+        const c = participant[j];
+        hashMap.set(c,hashMap.get(c)-1);
+    }
+
+    for(let [key,value] of hashMap){
+        if(value >0 ){
+            return key;
+        }
+    }
+
+
+    
+}
+
+console.log(solution1(["leo", "kiki", "eden"],["eden", "kiki"])); //"leo"

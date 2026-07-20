@@ -8,7 +8,7 @@ function solution2(password, hints) {
     // 1. hints 배열을 순회하며 알파벳이 가지는 숫자 값을 계산합니다.
     for (const hint of hints) {
         const parts = hint.split(' ');
-        
+        console.log('parts',parts);
         let letter = '';
         const nums = [];
         
@@ -136,9 +136,10 @@ function solution3(numbers, board) {
 // 테스트 케이스 확인
 const numbers = [1, 3, 2, 0, 0];
 const board = ["2", "23"];
-console.log(solution3(numbers, board)); // 출력: 3
+//console.log(solution3(numbers, board)); // 출력: 3
 
-//4."격자 내의 값을 방향 지시등으로 삼아, 첫 번째 열에서 출발해 마지막 열까지 무사히 도달하는(격자 밖으로 이탈하지 않는) 출발점의 개수를 구하는 시뮬레이션 문제" 였습니다.
+//4."격자 내의 값을 방향 지시등으로 삼아, 
+// 첫 번째 열에서 출발해 마지막 열까지 무사히 도달하는(격자 밖으로 이탈하지 않는) 출발점의 개수를 구하는 시뮬레이션 문제" 였습니다.
 
 function countSuccessfulPaths(grid) {
     if (!grid || grid.length === 0) return 0;
