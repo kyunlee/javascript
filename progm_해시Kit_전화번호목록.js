@@ -4,7 +4,6 @@ function solution(phone_book) {
 
     phone_book.sort();
 
-    console.log(phone_book)
     let len = phone_book.length;
 
     for(let i=0; i < len-1; i++){
@@ -17,4 +16,4 @@ function solution(phone_book) {
 }
 
 
-console.log(solution(["119", "97674223", "1195524421"]));
+console.log(solution(["119", "97674223", "1195524421"])); 
