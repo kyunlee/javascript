@@ -46,8 +46,6 @@ function solution1(participant, completion) {
         }
     }
 
-
-    
 }
 
 console.log(solution1(["leo", "kiki", "eden"],["eden", "kiki"])); //"leo"
