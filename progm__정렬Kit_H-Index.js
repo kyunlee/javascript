@@ -18,4 +18,4 @@ function solution(citations) {
     return answer;
 }
 
-console.log(solution([3, 0, 6, 1, 5]));
+//console.log(solution([3, 0, 6, 1, 5]));

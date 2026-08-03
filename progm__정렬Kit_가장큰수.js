@@ -9,4 +9,4 @@ function solution(numbers) {
     return answer[0]=="0" ? "0" : answer.toString();
 }
 
-console.log(solution([6, 10, 2]));
+//console.log(solution([6, 10, 2]));
