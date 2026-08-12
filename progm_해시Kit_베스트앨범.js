@@ -1,3 +1,5 @@
+//["classic", "pop", "classic", "classic", "pop"],[500, 600, 150, 800, 2500]
+
 function solution(genres, plays) {
     
     //1.상태관리를 위한 독립된 두 개의 Map 초기화
@@ -25,7 +27,7 @@ function solution(genres, plays) {
     }
 
     const answer = [];
-
+    console.log("totalPlayMap = ",[...totalPlayMap.entries()]);
     //2.Map 이터레이터를 활용한 배열 변환 및 장르 정렬 O (G log G)
     const sortedGenres = [...totalPlayMap.entries()].sort((a,b) => b[1] - a[1]) //Value(총 재생수) 기준 내림차순 정려
                                                     .map(entry => entry[0]); //정렬된 장르 이름(key)만 추출
@@ -55,3 +57,44 @@ function solution(genres, plays) {
 }
 
 console.log(solution(["classic", "pop", "classic", "classic", "pop"],[500, 600, 150, 800, 2500]));
+
+function solution2(genres, plays) {
+    const totalPlayMap = new Map();
+    const songMap = new Map();
+
+    const len = genres.length;
+    for(let i = 0; i < len; i++) {
+        const genre = genres[i];
+        const play = plays[i];
+
+        totalPlayMap.set(genre, (totalPlayMap.get(genre) || 0) + play);
+
+        if(!songMap.has(genre)){
+            songMap.set(genre,[]);
+        }
+        songMap.get(genre).push({id:i, play:play});
+    }
+
+    const answer = [];
+    const sortedGenres = [...totalPlayMap.entries()].sort((a,b) => b[1] -a[1])
+                                                    .map(entry => entry[0]);
+
+    for(let i = 0; i < sortedGenres.length; i++){
+        const genre = sortedGenres[i];
+        const songs = songMap.get(genre);
+
+        songs.sort((a,b) => {
+            if(a.play == b.play){
+                return a.id - bid;
+            }
+            return a.id - b.id;
+        });
+
+        answer.push(songs[0].id);
+        if(songs.length > 1){
+            answer.push(songs[1].id);
+        }
+    }
+
+    return answer;
+}
