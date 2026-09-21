@@ -1,4 +1,5 @@
-//1. 질문해주신 "고대유적 알파벳 격자 n*n 형태"는 알고리즘 코딩 테스트에서 자주 등장하는 2차원 배열(격자) 기반의 그래프 탐색(DFS/BFS) 및 백트래킹 유형
+//1. "고대유적 알파벳 격자 n*n 형태"는 알고리즘 
+// 코딩 테스트에서 자주 등장하는 2차원 배열(격자) 기반의 그래프 탐색(DFS/BFS) 및 백트래킹 유형
 
 /**
  * @param {string[]} board - 유적 알파벳 격자
@@ -10,7 +11,9 @@ function solution(board) {
     
     // 알파벳(a-z) 26개의 깊이 상태를 저장할 고정 크기 배열
     // TypedArray를 사용하면 V8 엔진 최적화에 더욱 유리합니다.
-    const depthMasks = new Int32Array(26);
+    //const depthMasks = new Int32Array(26);
+    const depthMasks = new Array(26).fill(0);
+    console.log(depthMasks);
     
     // 1. 격자 순회 및 깊이(Layer) 비트 기록
     // Array 내장 메서드(forEach, map) 대신 전통적인 for문을 사용하여 콜백 함수 오버헤드를 제거합니다.
