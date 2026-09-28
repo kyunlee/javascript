@@ -46,6 +46,20 @@ console.log(solution3("Code"))
 
 /* 명령어 수행하기(큐) */
 function solution4(commands) {
+    const queue = [];
+    const result = [];
+
+    commands.forEach(command => {
+        const [action, value] = command.split(" ");
+
+        if(action === "ENQUEUE"){
+            queue.push(Number(value));
+        }else if(action == "DEQUEUE"){
+            result.push(queue.length ? queue.shift() : "EMPTY");
+        }
+    });
+
+    return result;
 }
 console.log(
 solution4(["ENQUEUE 3", "ENQUEUE 5", "DEQUEUE", "DEQUEUE", "DEQUEUE"])
@@ -53,10 +67,22 @@ solution4(["ENQUEUE 3", "ENQUEUE 5", "DEQUEUE", "DEQUEUE", "DEQUEUE"])
 
 /*두줄 대기열에서 짝수 번호 뽑기 (큐) */
 
-function solution(queue1, queue2, k) {
+function solution5(queue1, queue2, k) {
+    const queue = [...queue1, ...queue2];
+    const result = [];
+    
+    while(result.length < k && queue.length > 0){
+        const person = queue.shift();
+
+        if( person % 2 === 0){
+            result.push(person);
+        } else {
+            queue.push(person);
+        }
+    }
+
+    return result;
 }
-console.log(solution([1, 3, 4, 6, 5, 8, 3`
+console.log(solution5([1, 3, 4],[6,5,8],3));
     
-    
-    
-    `
+ 
